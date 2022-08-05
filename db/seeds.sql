@@ -1,37 +1,38 @@
--- Loads table with data
+USE employees;
 
-INSERT INTO departments (department_name)
-VALUES
-    ('Design'),
-    ('Marketing'),
-    ('Software Development'),
-    ('Sales'),
-    ('Accounting');
+INSERT INTO department (name)
+VALUES ('Operations');
+INSERT INTO department (name)
+VALUES ('Analystics');
+INSERT INTO department (name)
+VALUES ('Marketing');
+INSERT INTO department (name)
+VALUES ('Executive');
 
+INSERT INTO role (title, salary, department_id)
+VALUES ('General Manager', 1000000, 1);
+INSERT INTO role (title, salary, department_id)
+VALUES ('Coach', 4000000, 2);
+INSERT INTO role (title, salary, department_id)
+VALUES ('Team Lead Analyst', 12000000, 2);
+INSERT INTO role (title, salary, department_id)
+VALUES ('Media Manager', 1250000, 3);
+INSERT INTO role (title, salary, department_id)
+VALUES ('CEO', 250000000, 4);
 
-INSERT INTO roles (job_title, salary, department_id)
-VALUES
-    ('Legal assistants', 55000, 5),
-    ('Sales Executive', 65000, 4 ),
-    ('Design Team Lead', 70000, 1),
-    ('Marketing analyst', 70000, 2),
-    ('Marketing consultant', 50000, 2),
-    ('Chief marketing officer', 150000, 2),
-    ('Engineering manager', 100000, 3),
-    ('Engineering Associate', 75000, 3),
-    ('Accounting Clerk', 50000, 5),
-    ('Design Analyst', 45000, 1);
-
-
-INSERT INTO employees (id, first_name, last_name, role_id, manager_id)
-VALUES
-  (1, 'Vivian', 'Walker', 12, NULL),
-  (2, 'Sabir', 'Moorer', 22, NULL),
-  (3, 'Caesar', 'Lopez', 14, 3),
-  (4, 'Katrina', 'Bey', 21, 2),
-  (5, 'Donna', 'Summers', 13, NULL),
-  (6, 'Edward', 'Bellamy', 25 , 3),
-  (7, 'Melissa', 'Holloway', 24, 4),
-  (8, 'Octavia', 'Brown', 17, 2),
-  (9, 'Thurgood', 'Ali', 18, NULL),
-  (10, 'Dezs', 'Walnuts', 28, 2);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ('Christiano', 'Ronaldo', 1, null);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ('Lionel', 'Messi', 2, 1);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ('Neymar', 'Jr', 3, null);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ('Andres', 'Iniesta', 4, 3);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ('Kylian', 'Mbappe', 5, null);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ('Paul', 'Pogba', 2, null);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ('Robert', 'Lewandowski', 4, 5);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ('Gareth', 'Bale', 1, 2);
