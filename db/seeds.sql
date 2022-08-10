@@ -1,38 +1,42 @@
-USE employees;
+-- Adding department data
+INSERT INTO department(name)
+VALUES ("Operations"), ("Marketing"), ("Sales"), ("Legal"), ("Tech");
 
-INSERT INTO department (name)
-VALUES ('Operations');
-INSERT INTO department (name)
-VALUES ('Analystics');
-INSERT INTO department (name)
-VALUES ('Marketing');
-INSERT INTO department (name)
-VALUES ('Executive');
+-- Adding role data
+INSERT INTO role(title, salary, department_id)
+VALUES ("Operations Manager",120000, 1),
+    ("Associate",75000, 1),
+    ("Marketing Manager",125000, 2),
+    ("Salesman",90000, 3),
+    ("Lawyer",180000, 4),
+    ("Developer",135000, 5),
+    ("Intern",85000, 5),
+    ("DevOps",120000, 5);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('General Manager', 1000000, 1);
-INSERT INTO role (title, salary, department_id)
-VALUES ('Coach', 4000000, 2);
-INSERT INTO role (title, salary, department_id)
-VALUES ('Team Lead Analyst', 12000000, 2);
-INSERT INTO role (title, salary, department_id)
-VALUES ('Media Manager', 1250000, 3);
-INSERT INTO role (title, salary, department_id)
-VALUES ('CEO', 250000000, 4);
+-- Adding employee data
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Rufus", "Humphry", 1, null),
+    ("Lily", "VanDerWoodsen", 3, null),
+    ("Nate", "Archabald", 5, 2),
+    ("Blair", "Waldorf", 2, 3),
+    ("Serena", "VanDerWoodsen", 3, 3),
+    ("Dan", "Humphry", 4, 3);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Christiano', 'Ronaldo', 1, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Lionel', 'Messi', 2, 1);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Neymar', 'Jr', 3, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Andres', 'Iniesta', 4, 3);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Kylian', 'Mbappe', 5, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Paul', 'Pogba', 2, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Robert', 'Lewandowski', 4, 5);
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Gareth', 'Bale', 1, 2);
+-- Adding views
+CREATE VIEW employee_info AS
+(SELECT
+role.id AS role_id,
+role.title,
+role.salary,
+department.name AS department_name
+FROM role 
+JOIN department 
+on role.department_id = department.id);
+
+CREATE VIEW employees_with_managers AS
+(SELECT emp.id,
+emp.first_name,
+emp.last_name,
+emp.role_id,
+CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name
+FROM employee AS manager RIGHT OUTER JOIN employee AS emp ON manager.id = emp.manager_id);
