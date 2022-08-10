@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-// const cTable = require('console.table');
+const cTable = require('console.table');
 const db = mysql.createConnection(
     {
       host: 'localhost',
@@ -68,7 +68,7 @@ promptUser();
 const viewAllDepartments = () => {
     db.query(`SELECT * FROM department`, function (err, results) {
         console.log(`\n`);
-        console.table(results);
+        cTable(results);
         promptUser();
     })
 }
@@ -76,7 +76,7 @@ const viewAllDepartments = () => {
 const viewAllRoles = () => {
     db.query(`SELECT * FROM role`, function (err, results) {
         console.log(`\n`);
-        console.table(results);
+        cTable(results);
         promptUser();
     })
 }
@@ -95,7 +95,7 @@ const viewAllEmployees = () => {
     JOIN employees_with_managers on employee_info.role_id = employees_with_managers.role_id;
     `, function (err, results) {
         console.log(`\n`);
-        console.table(results);
+        cTable(results);
         promptUser();
     })
 }
