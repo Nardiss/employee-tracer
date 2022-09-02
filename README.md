@@ -5,13 +5,19 @@ This app is a command-line application to manage a company's employee database, 
 
 
 # Video
-
+https://watch.screencastify.com/v/JU8Wmngyjv2OaGlMwW6k
 
 # Github Link
+https://github.com/Nardiss/employee-tracer
 
 # Installation
 
-npm i - will install all the needed dependecies
+`npm i`
+`mysql -u root -p`
+`mysql source db/schema.sql`
+`mysql source db/seeds.sql`
+`node index.js`
+
 
 touch .env
     
@@ -19,10 +25,6 @@ touch .env
     DB_USER = 'root'
     DB_PW = 'password'
     
-mysql -u root -p
-Enter your password:
-    source db/schema.sql
-
 
 ## Features
 
